@@ -1,6 +1,6 @@
 from enum import Enum
 import spidev
-from spi_base import SpiBase
+from spiflash.spi_base import SpiBase
 
 
 class SpiBus(Enum):

@@ -5,8 +5,8 @@ from tqdm import tqdm
 from pathlib import Path
 import yaml
 from elftools.elf.elffile import ELFFile
-from spi_flasher import SpiFlasher
-from spi_dev import SpiDev, SpiBus, SpiCs
+from spiflash.spi_flasher import SpiFlasher
+from spiflash.spi_dev import SpiDev, SpiBus, SpiCs
 
 
 def parse_elf(elf_path):

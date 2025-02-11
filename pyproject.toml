@@ -2,5 +2,14 @@
 requires = ["spidev", "pyelftools", "pyyaml", "tqdm"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "spiflash"
+version = "0.1.0"
+description = "This project is a firmware uploader for STM32, utilizing the Raspberry Pi's SPI bus for communication."
+authors = [{ name = "Yuta Fujiyama", email = "yuta.technology@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = []
+
 [project.scripts]
 spiflash = "spiflash.spiflash:main"

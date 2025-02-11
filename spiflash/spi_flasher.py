@@ -1,6 +1,6 @@
 import time
 import struct
-from spi_base import SpiBase
+from spiflash.spi_base import SpiBase
 
 
 class SpiFlasher:
