@@ -9,8 +9,18 @@ setup(
             "spiflash=spiflash.spiflash:main",  # `spiflash` コマンドで実行
         ],
     },
+    package_data={
+        'spiflash': ['devices.yml'],
+    },
     author="Yuta Fujiyama",
     author_email="yuta.technology@gmail.com",
     description="This project is a firmware uploader for STM32, utilizing the Raspberry Pi's SPI bus for communication.",
     url="https://github.com/yutatech/stm32-spi-flash",
+    install_requires=[
+        "spidev",
+        "pyelftools",
+        "pyyaml",
+        "tqdm",
+    ],
+    python_requires='>=3.7',
 )
