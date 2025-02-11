@@ -1,0 +1,54 @@
+- name: STM32F20x/STM32F21x
+  id: 0x411
+- name: STM32F40x/STM32F41x
+  id: 0x413
+- name: STM32F42x/STM32F43x
+  id: 0x419
+- name: STM32F446
+  id: 0x421
+  flash_addr: 0x08000000
+  sectors:
+    - size: 0x4000
+      length: 4
+    - size: 0x10000
+      length: 1
+    - size: 0x20000
+      length: 3
+- name: STM32F401xB/C
+  id: 0x423
+- name: STM32F411
+  id: 0x431
+- name: STM32F401xD/E
+  id: 0x433
+- name: STM32F469/STM32F479
+  id: 0x434
+- name: STM32F412
+  id: 0x441
+- name: STM32F74x/STM32F75x
+  id: 0x449
+- name: STM32F76x/STM32F77x
+  id: 0x451
+- name: STM32F72x/STM32F73x
+  id: 0x452
+- name: STM32F410
+  id: 0x458
+- name: STM32F413x/STM32F423x 
+  id: 0x463
+- name: STM32G431/STM32G441
+  id: 0x468
+  flash_addr: 0x08000000
+  sectors:
+    - size: 0x800
+      length: 64
+- name: STM32G471/STM32G473/STM32G474
+  id: 0x469
+  flash_addr: 0x08000000
+  sectors:
+    - size: 0x800
+      length: 256
+- name: STM32G491/STM32G4A1
+  id: 0x479
+  flash_addr: 0x08000000
+  sectors:
+    - size: 0x800
+      length: 256

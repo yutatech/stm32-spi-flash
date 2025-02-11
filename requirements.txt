@@ -1,2 +1,4 @@
 spidev
 pyelftools
+pyyaml
+tqdm

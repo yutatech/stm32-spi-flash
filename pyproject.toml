@@ -1,0 +1,6 @@
+[build-system]
+requires = ["spidev", "pyelftools", "pyyaml", "tqdm"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+spiflash = "spiflash.spiflash:main"
