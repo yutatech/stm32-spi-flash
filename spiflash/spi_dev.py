@@ -30,6 +30,7 @@ class SpiDev(SpiBase):
         self.spi.open(bus.value, cs.value)
         self.spi.max_speed_hz = speed
         self.spi.mode = 0  # Mode 0 (CPOL=0, CPHA=0)
+        self.spi.no_cs = False
 
     def __del__(self):
         self.close()
