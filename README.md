@@ -20,6 +20,9 @@ spiflash elf.elf
 spiflash --spi-bus 0 --spi-cs 0 --spi-speed 4000000 binary.bin
 ```
 
+## Command Options
+see `spiflash --help`
+
 ## Debug
 
 ```sh

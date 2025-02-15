@@ -7,7 +7,49 @@ import yaml
 from elftools.elf.elffile import ELFFile
 from spiflash.spi_flasher import SpiFlasher
 from spiflash.spi_dev import SpiDev, SpiBus, SpiCs
+import lib_gpio
 
+def gpio_reset(bus, cs):
+    """Reset the GPIO for the default chip select pin."""
+    if bus == SpiBus.SPI0:
+        if cs == SpiCs.CS0:
+            lib_gpio.gpio_reset(8)
+        elif cs == SpiCs.CS1:
+            lib_gpio.gpio_reset(7)
+    elif bus == SpiBus.SPI1:
+        if cs == SpiCs.CS0:
+            lib_gpio.gpio_reset(18)
+        elif cs == SpiCs.CS1:
+            lib_gpio.gpio_reset(17)
+        elif cs == SpiCs.CS2:
+            lib_gpio.gpio_reset(16)
+    elif bus == SpiBus.SPI2:
+        if cs == SpiCs.CS0:
+            lib_gpio.gpio_reset(43)
+        elif cs == SpiCs.CS1:
+            lib_gpio.gpio_reset(4)
+        elif cs == SpiCs.CS2:
+            lib_gpio.gpio_reset(45)
+    elif bus == SpiBus.SPI3:
+        if cs == SpiCs.CS0:
+            lib_gpio.gpio_reset(0)
+        elif cs == SpiCs.CS1:
+            lib_gpio.gpio_reset(24)
+    elif bus == SpiBus.SPI4:
+        if cs == SpiCs.CS0:
+            lib_gpio.gpio_reset(4)
+        elif cs == SpiCs.CS1:
+            lib_gpio.gpio_reset(25)
+    elif bus == SpiBus.SPI5:
+        if cs == SpiCs.CS0:
+            lib_gpio.gpio_reset(12)
+        elif cs == SpiCs.CS1:
+            lib_gpio.gpio_reset(26)
+    elif bus == SpiBus.SPI6:
+        if cs == SpiCs.CS0:
+            lib_gpio.gpio_reset(18)
+        elif cs == SpiCs.CS1:
+            lib_gpio.gpio_reset(27)
 
 def parse_elf(elf_path):
     """ELF ファイルをパースし、書き込むデータを抽出"""
@@ -122,6 +164,9 @@ def main():
         "--spi-cs", "-c", type=int, default=0, help="SPI CS number. Default is 0"
     )
     parser.add_argument(
+        "--cs-pin", "-p", type=int, default=None, help="SPI CS GPIO number. If a pin number other than the default is set for the CS pin, it is recommended to set this argument. It will forcibly set the altmode of the provided pin to output."
+    )
+    parser.add_argument(
         "--spi-speed",
         "-s",
         type=int,
@@ -158,6 +203,11 @@ def main():
     else:
         print("Invalid value for -spi-cs. Expected a number between 0 and 2.")
         return 1
+    
+    if args.cs_pin:
+        lib_gpio.gpio_reset(args.cs_pin)
+    else:
+        gpio_reset(spi_bus, spi_cs)
 
     flasher = SpiFlasher(SpiDev(spi_bus, spi_cs, args.spi_speed))
 

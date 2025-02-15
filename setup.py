@@ -1,4 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
+from setuptools.command.build_ext import build_ext
 
 setup(
     name="spiflash",
@@ -23,4 +24,6 @@ setup(
         "tqdm",
     ],
     python_requires='>=3.7',
+    ext_modules=[Extension('lib_gpio', sources=['spiflash/lib_gpio.c'])],
+    cmdclass={'build_ext': build_ext},
 )
